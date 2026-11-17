@@ -26,7 +26,7 @@ export default async function handler(req: Request, res: Response) {
       requestOrigin || process.env.APP_URL || 'http://localhost:3000';
     const redirectTo = rawRedirect.startsWith('http')
       ? rawRedirect
-      : `${fallbackOrigin.replace(/\\/+$/, '')}/#admin`;
+      : `${fallbackOrigin.replace(/\/+$/, '')}/#admin`;
 
     const url = await getSupabaseGoogleOAuthUrl(redirectTo);
     return res.status(200).json({ url });
