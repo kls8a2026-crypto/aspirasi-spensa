@@ -1,0 +1,8 @@
+{
+  "name": "Remix Aspirasi Siswa Online - SMP Negeri 1 Ungaran",
+  "description": "Media komunikasi siswa SMP Negeri 1 Ungaran untuk menyampaikan ide, saran, kritik, dan aspirasi lingkungan sekolah secara langsung dan terbuka.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

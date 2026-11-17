@@ -1,0 +1,100 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
+  --font-sans: "DM Sans", "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+
+  --color-navy-950: #06123B;
+  --color-navy-900: #0A1D5E;
+  --color-navy-800: #14359E;
+  --color-sky-tint: #E0F2FE;
+}
+
+@layer base {
+  html {
+    font-family: var(--font-sans);
+    scroll-behavior: smooth;
+    background-color: #09184D;
+    color: #F0F7FF;
+  }
+
+  h1, h2, h3, h4, .font-display {
+    font-family: var(--font-display);
+  }
+}
+
+.cosmic-canvas {
+  background:
+    radial-gradient(circle at 14% 18%, rgba(56, 189, 248, 0.24) 0%, transparent 42%),
+    radial-gradient(circle at 86% 22%, rgba(167, 139, 250, 0.24) 0%, transparent 44%),
+    radial-gradient(circle at 52% 84%, rgba(59, 130, 246, 0.30) 0%, transparent 50%),
+    linear-gradient(145deg, #07133E 0%, #0E2673 38%, #183EA8 72%, #112A7A 100%);
+}
+
+.glass-surface {
+  background: rgba(9, 24, 77, 0.72);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(147, 197, 253, 0.24);
+  box-shadow:
+    0 12px 32px -12px rgba(4, 10, 40, 0.65),
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.22);
+}
+
+.soft-neu-card {
+  background: linear-gradient(
+    155deg,
+    rgba(255, 255, 255, 0.14) 0%,
+    rgba(20, 52, 140, 0.52) 48%,
+    rgba(10, 27, 86, 0.72) 100%
+  );
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1.5px solid rgba(165, 212, 255, 0.32);
+  box-shadow:
+    0 18px 40px -16px rgba(3, 10, 38, 0.72),
+    0 0 26px -10px rgba(56, 189, 248, 0.22),
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.35);
+}
+
+.soft-neu-inset {
+  background: rgba(7, 20, 64, 0.56);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(147, 197, 253, 0.26);
+  box-shadow: inset 0 2px 10px rgba(3, 8, 30, 0.45);
+}
+
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+@keyframes cosmicDrift {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(18px, -14px, 0) scale(1.04);
+  }
+}
+
+.animate-cosmic-drift {
+  animation: cosmicDrift 16s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .animate-cosmic-drift {
+    animation: none !important;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
