@@ -36,11 +36,10 @@ dotenv.config();
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-async function startServer() {
-  const app = express();
-  const port = Number(process.env.PORT) || 3000;
+const app = express();
+const port = Number(process.env.PORT) || 3000;
 
-  app.use(express.json({ limit: '2mb' }));
+app.use(express.json({ limit: '2mb' }));
 
   // --- Public Routes ---
 
@@ -372,8 +371,12 @@ async function startServer() {
     }
   );
 
-  // --- Vite Middleware (Dev) / Static Files (Prod) ---
+export default app;
 
+// Start the integrated Express + Vite server only when this file is executed
+// directly. Vercel imports the Express app from api/index.ts and manages the
+// function lifecycle itself.
+async function startServer() {
   if (process.env.NODE_ENV !== 'production') {
     const { createServer: createViteServer } = await import('vite');
     const vite = await createViteServer({
@@ -396,4 +399,7 @@ async function startServer() {
   });
 }
 
-void startServer();
+const invokedPath = process.argv[1] ? path.resolve(process.argv[1]) : '';
+if (invokedPath === __filename) {
+  void startServer();
+}
